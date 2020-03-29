@@ -35,6 +35,7 @@ for i in edges:
 
 p.primMST(); 
 '''
+Link to the article -> https://www.geeksforgeeks.org/timeit-python-examples/
 setup #Import all the functions you are going to call
 stmt #Run those functions
 repeat #the number of times you repeat a function
