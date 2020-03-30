@@ -2,14 +2,14 @@ import timeit
 from MST.Krushkal import Krushkal
 from MST.Prims import Prims
 from random import randint
+import matplotlib.pyplot as plt
 
-v = randint(100,1000)
-edges = []
-edge = randint(4*v,10*v)
-print("Number of vertices(V): {} | Number of edges: {}".format(v,edge))
-for i in range(edge):
-    a = [randint(0,v-1),randint(0,v-1),randint(1,10**5)]
-    edges.append(a)
+def edges_build(v,edge):
+    edges = []
+    for _ in range(edge):
+        a = [randint(0,v-1),randint(0,v-1),randint(1,10**5)]
+        edges.append(a)
+    return edges
 '''
 v = 4
 edges = [
@@ -20,6 +20,11 @@ edges = [
     [2,3,4]
 ]
 '''
+v = randint(100,1000)
+edge = randint(4*v,10*v)
+edges = edges_build(v,edge)
+print("Number of vertices(V): {} | Number of edges: {}".format(v,edge))
+
 print("Krushkal's Algorithms")
 k = Krushkal(v)
 for i in edges:
