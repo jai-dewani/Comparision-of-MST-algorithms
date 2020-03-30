@@ -3,6 +3,8 @@
 # undirected and weighted graph 
 
 from collections import defaultdict 
+import time
+import tracemalloc
 
 class Krushkal: 
 
@@ -43,8 +45,10 @@ class Krushkal:
 
 	# The main function to construct MST using Kruskal's 
 		# algorithm 
-	def KruskalMST(self): 
-
+	def KruskalMST(self, to_print=True,memory=True):
+		if memory:
+			tracemalloc.start() 
+		start_time = time.time()
 		result =[] #This will store the resultant MST 
 
 		i = 0 # An index variable, used for sorted edges 
@@ -81,12 +85,18 @@ class Krushkal:
 				result.append([u,v,w]) 
 				self.union(parent, rank, x, y)			 
 			# Else discard the edge 
-
+		end_time = time.time()
+		__,peak=-1,-1
+		if memory:
+			__,peak = tracemalloc.get_traced_memory()
+			tracemalloc.stop()
 		# print the contents of result[] to display the built MST 
-		print ("Following are the edges in the constructed MST")
-		for u,v,weight in result: 
-			#print str(u) + " -- " + str(v) + " == " + str(weight) 
-			print ("%d -- %d == %d" % (u,v,weight)) 
+		if to_print:
+			print("Following are the edges in the constructed MST")
+			for u,v,weight in result: 
+				#print str(u) + " -- " + str(v) + " == " + str(weight) 
+				print ("%d -- %d == %d" % (u,v,weight))
+		return end_time-start_time,peak/10**6 
 
 # Driver code 
 

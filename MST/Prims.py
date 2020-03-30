@@ -2,6 +2,8 @@
 # The program is for adjacency matrix representation of the graph 
 
 import sys # Library for INT_MAX 
+import time
+import tracemalloc
 
 class Prims(): 
 
@@ -32,8 +34,10 @@ class Prims():
 
     # Function to construct and print MST for a graph 
     # represented using adjacency matrix representation 
-    def primMST(self): 
-
+    def primMST(self,to_print=True, memory=True):
+        if memory:
+            tracemalloc.start() 
+        start_time = time.time()
             # Key values used to pick minimum weight edge in cut 
         key = [sys.maxsize] * self.V 
         parent = [None] * self.V # Array to store constructed MST 
@@ -43,7 +47,7 @@ class Prims():
 
         parent[0] = -1 # First node is always the root of 
 
-        for cout in range(self.V): 
+        for _ in range(self.V): 
 
             # Pick the minimum distance vertex from 
             # the set of vertices not yet processed. 
@@ -65,7 +69,14 @@ class Prims():
                 if self.graph[u][v] > 0 and mstSet[v] == False and key[v] > self.graph[u][v]: 
                     key[v] = self.graph[u][v] 
                     parent[v] = u 
+        end_time = time.time()
+        __,peak=-1,-1
+        if memory:
+            __,peak = tracemalloc.get_traced_memory()
+            tracemalloc.stop()
+        if to_print:
+            self.printMST(parent)
 
-        self.printMST(parent) 
+        return end_time-start_time,peak/10**6 
 
 # Contributed by Divyanshu Mehta 
