@@ -96,7 +96,7 @@ class Krushkal:
 			for u,v,weight in result: 
 				#print str(u) + " -- " + str(v) + " == " + str(weight) 
 				print ("%d -- %d == %d" % (u,v,weight))
-		return end_time-start_time,peak/10**6 
+		return end_time-start_time,peak/10**6,result 
 
 # Driver code 
 
