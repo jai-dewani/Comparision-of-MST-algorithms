@@ -28,11 +28,7 @@ def draw_graph(v,edge):
 
 kruskal = []
 prim = []
-<<<<<<< HEAD
-for v in range(100,1001,20):
-=======
 for v in range(10,11):
->>>>>>> fe0fc4a87d04afd35363423c2692cb0c8d47ad49
     # edge = randint(4*v,10*v)
     edge = 10*v
     edges = edges_build(v,edge)
