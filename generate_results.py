@@ -4,6 +4,7 @@ from MST.Prims import Prims
 from random import randint
 import matplotlib.pyplot as plt
 import numpy as np
+import networkx as nx
 
 def edges_build(v,edge):
     edges = []
@@ -12,13 +13,27 @@ def edges_build(v,edge):
         edges.append(a)
     return edges
 
+def draw_graph(v,edge):
+    G = nx.Graph()
+    G.add_nodes_from(range(v))
+    temp = []
+    # print(edge)
+    for i in edge:
+        temp.append((i[0],i[1]))
+    print(temp)
+    G.add_edges_from(temp)
+    # G.add_edges_from([(1,2),(2,3)])
+    nx.draw(G)
+    plt.show()
+
 kruskal = []
 prim = []
-for v in range(100,120):
+for v in range(10,11):
     # edge = randint(4*v,10*v)
     edge = 10*v
-    
     edges = edges_build(v,edge)
+    # print(edges)
+    draw_graph(v,edges)
     try:
         k = Krushkal(v)
         for i in edges:
