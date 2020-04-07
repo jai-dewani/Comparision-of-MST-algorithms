@@ -14,7 +14,7 @@ def edges_build(v,edge):
 
 kruskal = []
 prim = []
-for v in range(100,120):
+for v in range(100,1001,20):
     # edge = randint(4*v,10*v)
     edge = 10*v
     
@@ -76,9 +76,11 @@ prim_mean_memory = prim[:,3].mean()
 
 kruskal_mean_time = kruskal[:,2].mean()
 prim_mean_time = prim[:,2].mean()
-
-print(kruskal_mean_memory,kruskal_mean_time)
-print(prim_mean_memory,prim_mean_time)
+print(len(kruskal),len(prim))
+print("Kruskal's")
+print("Memory:{}MB | Time:{}s".format(kruskal_mean_memory,kruskal_mean_time))
+print("Prim's")
+print("Memory:{}MB | Time:{}s".format(prim_mean_memory,prim_mean_time))
 
 '''
 Link to the article -> https://www.geeksforgeeks.org/timeit-python-examples/
