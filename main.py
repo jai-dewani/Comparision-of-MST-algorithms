@@ -1,14 +1,15 @@
 import timeit
-from Krushkal import Krushkal
-from Prims import Prims
+from MST.Krushkal import Krushkal
+from MST.Prims import Prims
 from random import randint
+import matplotlib.pyplot as plt
 
-v = randint(100,1000)
-edges = []
-edge = randint(v,10*v)
-for i in range(edge):
-    a = [randint(0,v-1),randint(0,v-1),randint(1,10**5)]
-    edges.append(a)
+def edges_build(v,edge):
+    edges = []
+    for _ in range(edge):
+        a = [randint(0,v-1),randint(0,v-1),randint(1,10**5)]
+        edges.append(a)
+    return edges
 '''
 v = 4
 edges = [
@@ -19,11 +20,21 @@ edges = [
     [2,3,4]
 ]
 '''
+v = randint(100,1000)
+edge = randint(4*v,10*v)
+edges = edges_build(v,edge)
+print("Number of vertices(V): {} | Number of edges: {}".format(v,edge))
+
+print("Krushkal's Algorithms")
 k = Krushkal(v)
 for i in edges:
     k.addEdge(i[0],i[1],i[2])
-k.KruskalMST() 
+time,memory = k.KruskalMST(to_print=False, memory=False)
+time_,memory = k.KruskalMST(to_print=False, memory=True)
+print("Time:{}s | Memory: {} MB".format(time,memory))
 
+
+print("Prim's Algorithm")
 p = Prims(v) 
 p.graph = [[0 for i in range(v)] for j in range(v)]
 for i in edges:
@@ -33,7 +44,10 @@ for i in edges:
     p.graph[x][y] = w
     p.graph[y][x] = w
 
-p.primMST(); 
+time1,memory1 = p.primMST(to_print=False,memory=False)
+time1_,memory1 = p.primMST(to_print=False,memory=True)
+print("Time:{}s Memory: {} MB".format(time1,memory1))
+
 '''
 Link to the article -> https://www.geeksforgeeks.org/timeit-python-examples/
 setup #Import all the functions you are going to call
