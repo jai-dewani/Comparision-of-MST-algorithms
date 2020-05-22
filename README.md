@@ -18,26 +18,19 @@ This project is implemented on Core i7 7500 CPU 2.83 GHz with 8GB of DDR4 RAM. T
 
 ## Here are some result that we got from our analysis
 
-### Orignal Graph 
-![Orignal Graph](images/Original_Graph.png)
-
-### MST Created by Kruskal Algorithm
-![MST by Kruskal](images/MST_using_Kruskal.png)
-
-### MST Created by Prim Algorithm
-![MST by Prim](images/MST_using_Prim.png)
-
-### Number of Nodes vs Time(s) for Kruskal 
-![Nodes vs Time(s) for Kruskal](images/Kruskal_Time.png)
-
-### Number of Nodes vs Time(s) for Prime
-![Nodes vs Time(s) for Prim](images/Prim_Time.png)
+Orignal Graph | MST Created by Kruskal Algorithm | MST Created by Prim Algorithm
+----- | ----- | ----
+![Orignal Graph](images/Original_Graph.png) | ![MST by Kruskal](images/MST_using_Kruskal.png) | ![MST by Prim](images/MST_using_Prim.png)
 
 
-### Number of Nodes vs Memory for Kruskal
-![Nodes vs Memory for Kruskal](images/kruskal_memory.png)
-### Number of Nodes vs Memory for Kruskal
-![Nodes vs Memory for Kruskal](images/Prim_Memory.png)
+Number of Nodes vs Time(s) for Kruskal | Number of Nodes vs Time(s) for Prime
+---- | ---- 
+![Nodes vs Time(s) for Kruskal](images/Kruskal_Time.png) |![Nodes vs Time(s) for Prim](images/Prim_Time.png)
+
+
+Number of Nodes vs Memory for Kruskal | Number of Nodes vs Memory for Kruskal
+---- | ---- 
+![Nodes vs Memory for Kruskal](images/kruskal_memory.png) | ![Nodes vs Memory for Kruskal](images/Prim_Memory.png)
 
 ## Conclusion
 Kruskal takes more space but 15 folds less time than that of prim’s algorithm. In today’s world, space is not an issue, but time is. The controller needs to build MST quickly. So Kruskal’s algorithm suits best for the MST construction for the TEDP.
